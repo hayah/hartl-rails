@@ -1,13 +1,7 @@
 == provide(:title, @user.name)
-h1
-  = gravatar_for @user
-  = @user.name
-br
-' Created at:
-= @user.created_at
-br
-' Updated at:
-= @user.updated_at
-br
-' Time now:
-= Time.now
+.row
+  aside.col-md-4
+    section.user_info
+      h1
+        = gravatar_for @user
+        = @user.name
