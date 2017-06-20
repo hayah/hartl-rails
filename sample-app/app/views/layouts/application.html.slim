@@ -7,8 +7,7 @@ html
     == render 'layouts/header'
     .container
       - flash.each do |message_type, message|
-        div class = "alert alert-#{message_type}"
-          == message
+        == content_tag(:div, message, class: "alert alert-#{message_type}")
       == yield
       == debug(params) if Rails.env.development?
       == render 'layouts/footer'
