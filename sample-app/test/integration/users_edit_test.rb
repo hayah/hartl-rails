@@ -13,5 +13,6 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               password: 'foo',
                                               password_confirmation: 'bar' } }
     assert_template 'users/edit'
+    assert_select 'div.alert', {text: 'The form contains 4 errors'}
   end
 end
