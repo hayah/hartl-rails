@@ -33,6 +33,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @user.reload
     assert_equal name,  @user.name
     assert_equal email, @user.email
+    assert session[:forwarding_url].nil?
   end
 
   test 'should redirect edit when logged in as wrong user' do
