@@ -24,8 +24,15 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
   end
 
   test "index as non-admin" do
+    malory = users(:malory)
+    malory.activated = false
+    malory.save
     log_in_as(@non_admin)
+    get user_path(malory)
+    assert_redirected_to root_url
     get users_path
+    assert_select 'a[href=?]', user_path(malory), count: 0
     assert_select 'a', text: 'delete', count: 0
+
   end
 end
