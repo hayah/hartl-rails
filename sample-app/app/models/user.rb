@@ -86,6 +86,10 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def feed
+    Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
+  end
+
   private
 
   def downcase_email
